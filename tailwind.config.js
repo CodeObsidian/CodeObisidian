@@ -15,6 +15,7 @@ export default {
       'secondary': '#BFBFBF',
       'oldAccent': '#98B6E6',
       'accent': '#417efd',
+      'silverAccent': '#C0C0C0',
       'accent-2': '#002D3C',
       'error': '#aa4f4f'
     },

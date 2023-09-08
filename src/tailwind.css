@@ -38,7 +38,7 @@
   }
 
   .page h1 {
-    @apply text-accent;
+    @apply text-silverAccent;
     @apply text-2xl;
     @apply md:text-3xl;
     @apply font-[600];

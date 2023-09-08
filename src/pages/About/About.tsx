@@ -75,7 +75,7 @@ const Team = () => {
     {
       imgSrc: 'assets/images/team/placeholder-person.jpg',
       name: 'Harry Gray',
-      position: 'VP of Engineering',
+      position: 'CTO',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
     }
   ]
