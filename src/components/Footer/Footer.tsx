@@ -61,7 +61,7 @@ export default function Footer() {
               <Link to='#' className='text-primary font-[600]'>Terms of Use</Link>
             </div>
           </div>
-          <div className='flex flex-col gap-6'>
+          {/* <div className='flex flex-col gap-6'>
             <div className='flex flex-col gap-1'>
               <h2 className='text-secondary font-[600] mb-2'>Lorem</h2>
               <Link to='#' className='text-primary font-[600]'>Lorem Ipsum</Link>
@@ -76,8 +76,8 @@ export default function Footer() {
               <Link to='#' className='text-primary font-[600]'>Lorem Ipsum</Link>
               <Link to='#' className='text-primary font-[600]'>Lorem Ipsum</Link>
             </div>
-          </div>
-          <div className='flex flex-col gap-6'>
+          </div> */}
+          {/* <div className='flex flex-col gap-6'>
             <div className='flex flex-col gap-1'>
               <h2 className='text-secondary font-[600] mb-2'>Lorem</h2>
               <Link to='#' className='text-primary font-[600]'>Lorem Ipsum</Link>
@@ -92,7 +92,7 @@ export default function Footer() {
               <Link to='#' className='text-primary font-[600]'>Lorem Ipsum</Link>
               <Link to='#' className='text-primary font-[600]'>Lorem Ipsum</Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

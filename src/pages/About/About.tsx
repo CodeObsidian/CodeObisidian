@@ -1,20 +1,24 @@
 import Principle from "components/Principle/Principle"
 import TeamMember from "components/TeamMember/TeamMember"
+import { Helmet } from "react-helmet";
 import PrincipleType from "types/PrincipleType"
 import TeamMemberType from "types/TeamMemberType"
 
 export default function About() {
   return (
     <main className='page'>
+      <Helmet>
+        <title>About Us - Code Obsidian</title>
+        <meta name="description" content="Learn about Code Obsidian's core principles, mission, and the innovative team behind our technology solutions." />
+      </Helmet>
       <div className='container'>
-        <h1 className='animate-in'>About</h1>
+        <h1 className='animate-in'>About Us</h1>
       </div>
       <Principles />
       <Team />
     </main>
-  )
+  );
 }
-
 const Principles = () => {
   const principles : PrincipleType[] = [
     {
@@ -69,20 +73,20 @@ const Team = () => {
     {
       imgSrc: 'assets/images/team/placeholder-person.jpg',
       name: 'Nathanael Hauser',
-      position: 'COO & Co-Founder',
+      position: 'CTO & Co-Founder',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
     },
     {
       imgSrc: 'assets/images/team/placeholder-person.jpg',
       name: 'Harry Gray',
-      position: 'CTO',
+      position: 'Sr. Software Engineer',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
     }
   ]
 
   const teamMembersRender = teamMembers.map((m, i) => {
     return (
-      <TeamMember key={i} imgSrc={m.imgSrc} name={m.name} position={m.position} bio={m.bio} />
+      <TeamMember key={i} imgSrc={m.imgSrc}  name={m.name} position={m.position} bio={m.bio} />
     )
   })
 

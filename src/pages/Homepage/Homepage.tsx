@@ -1,15 +1,29 @@
 import ServiceType from 'types/ServiceType'
 import { HiCode } from 'react-icons/hi'
 import Service from 'components/Service/Service'
+import { Helmet } from 'react-helmet'
 
 export default function Homepage() {
   return (
-    <main>
-      <Hero />
-      <Services />
-    </main>
-  )
+    <>
+      <Helmet>
+        <title>Code Obsidian - Elevate Your Software Experience</title>
+        <meta name="description" content="Discover cutting-edge tech and elevate your software experience with Code Obsidian. Specializing in full-stack web application development, API integration, and React Native mobile apps." />
+        <meta property="og:title" content="Code Obsidian - Elevate Your Software Experience" />
+        <meta property="og:description" content="Discover cutting-edge tech and elevate your software experience with Code Obsidian. Specializing in full-stack web application development, API integration, and React Native mobile apps." />
+        <meta property="og:image" content="https://www.codeobsidian.com/assets/images/colorLogoNoBackground.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.codeobsidian.com" />
+        <link rel="icon" href="/favicon.ico" />
+      </Helmet>
+      <main>
+        <Hero />
+        <Services />
+      </main>
+    </>
+  );
 }
+
 
 const Hero = () => {
   return (

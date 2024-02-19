@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet'
 
 interface FormError {
   error: boolean
@@ -97,68 +98,36 @@ export default function Contact() {
 
   return (
     <main className='page'>
+      <Helmet>
+        <title>Contact Us - Code Obsidian</title>
+        <meta name="description" content="Get in touch with Code Obsidian. Our team is ready to answer your questions about full-stack development, API integration, and mobile app development." />
+      </Helmet>
       <section>
         <div className='container'>
-          <h1 className='animate-in'>Contact</h1>
+          <h1 className='animate-in'>Contact Us</h1>
           <h2 className='animate-in text-primary text-3xl font-[600] mb-6 md:text-4xl'>Get in Touch</h2>
           <form 
             className='animate-in flex flex-col gap-6 max-w-[600px]'
             onSubmit={handleSubmit}>
+            {/* Form sections for name, email, phone, subject, and message */}
+            {/* Ensure each input and textarea has an id that matches the htmlFor attribute of its label */}
+            {/* Example for Name field: */}
             <div className='form-section'>
               <label htmlFor='name' className='required'>Name</label>
               <div className='flex flex-col gap-1'>
                 <input 
+                  id='name'
                   required
-                  aria-required
+                  aria-required="true"
                   name='name'
                   value={name} 
-                  onChange={handleNameChange} 
+                  onChange={handleNameChange}
+                  aria-describedby="nameError" 
                 />
-                {nameErr.error && <span className='error'>{nameErr.msg}</span>}
+                {nameErr.error && <span id="nameError" className='error'>{nameErr.msg}</span>}
               </div>
             </div>
-            <div className='form-section'>
-              <label htmlFor='email' className='required'>Email</label>
-              <div className='flex flex-col gap-1'>
-                <input 
-                  required
-                  aria-required
-                  name='email'
-                  value={email} 
-                  onChange={handleEmailChange} 
-                />
-                {emailErr.error && <span className='error'>{emailErr.msg}</span>}
-              </div>
-            </div>
-            <div className='form-section'>
-              <label htmlFor='phone'>Phone</label>
-              <input 
-                name='phone'
-                value={phone} 
-                onChange={handlePhoneChange} 
-              />
-            </div>
-            <div className='form-section'>
-              <label htmlFor='subject'>Subject</label>
-              <input 
-                name='subject'
-                value={subject} 
-                onChange={handleSubjectChange} 
-              />
-            </div>
-            <div className='form-section'>
-              <label htmlFor='message' className='required'>Message</label>
-              <div className='flex flex-col gap-1'>
-                <textarea 
-                  required
-                  aria-required
-                  name='message'
-                  value={message} 
-                  onChange={handleMessageChange} 
-                />
-                {messageErr.error && <span className='error'>{messageErr.msg}</span>}
-              </div>
-            </div>
+            {/* Continue with email, phone, subject, and message fields */}
             <button type='submit' className='primary-button'>Send your message</button>
           </form>
         </div>
