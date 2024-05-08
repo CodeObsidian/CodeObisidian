@@ -10,7 +10,7 @@ export default function TeamMember({ imgSrc, name, position, bio } : TeamMemberT
       />
       <h3 className='text-primary text-2xl font-[600] lg:text-3xl'>{name}</h3>
       <span className='text-accent text-lg'>{position}</span>
-      <p className='text-secondary mt-2'>{bio}</p>
+      {/* <p className='text-secondary mt-2'>{bio}</p> */}
     </div>
   )
 }
