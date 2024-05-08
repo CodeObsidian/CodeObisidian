@@ -54,12 +54,12 @@ export default function Footer() {
               <NavLink to='/about' className='text-primary font-[600]'>About Us</NavLink>
               <NavLink to='/services' className='text-primary font-[600]'>Our Services</NavLink>
             </div>
-            <div className='flex flex-col gap-1'>
+            {/* <div className='flex flex-col gap-1'>
               <h2 className='text-secondary font-[600] mb-2'>Legal</h2>
               <Link to='#' className='text-primary font-[600]'>Privacy Policy</Link>
               <Link to='#' className='text-primary font-[600]'>Copyright</Link>
               <Link to='#' className='text-primary font-[600]'>Terms of Use</Link>
-            </div>
+            </div> */}
           </div>
           {/* <div className='flex flex-col gap-6'>
             <div className='flex flex-col gap-1'>
