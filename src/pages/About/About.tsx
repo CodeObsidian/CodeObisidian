@@ -81,6 +81,12 @@ const Team = () => {
       name: 'Harry Gray',
       position: 'Sr. Software Engineer',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
+    },
+    {
+      imgSrc: 'assets/images/team/placeholder-person.jpg',
+      name: 'Zack Campanelli',
+      position: 'Jr. Software Engineer',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
     }
   ]
 
