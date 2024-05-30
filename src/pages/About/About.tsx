@@ -65,15 +65,21 @@ const Principles = () => {
 const Team = () => {
   const teamMembers : TeamMemberType[] = [
     {
-      imgSrc: 'assets/images/team/placeholder-person.jpg',
+      imgSrc: 'https://res.cloudinary.com/ddumljyu6/image/upload/v1717052932/tbr1elzoatkihijnsrv9.jpg',
       name: 'Tory Redner',
       position: 'CEO & Founder',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
     },
     {
-      imgSrc: 'assets/images/team/placeholder-person.jpg',
+      imgSrc: 'https://res.cloudinary.com/ddumljyu6/image/upload/v1717051845/vclojnsdngkcejes9os1.jpg',
       name: 'Nathanael Hauser',
       position: 'CTO & Co-Founder',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
+    },
+    { 
+      imgSrc: 'https://res.cloudinary.com/ddumljyu6/image/upload/v1717051814/i4ermzhamsgxi2aeydvq.jpg',
+      name: 'Maleka Redner',
+      position: 'Interim COO',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
     },
     {
@@ -81,12 +87,13 @@ const Team = () => {
       name: 'Harry Gray',
       position: 'Sr. Software Engineer',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
-    }
+    },
+   
   ]
 
   const teamMembersRender = teamMembers.map((m, i) => {
     return (
-      <TeamMember key={i} imgSrc={m.imgSrc}  name={m.name} position={m.position} bio={m.bio} />
+      <TeamMember key={i} imgSrc={m.imgSrc}  name={m.name} position={m.position}  />
     )
   })
 
