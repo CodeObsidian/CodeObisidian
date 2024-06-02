@@ -83,13 +83,13 @@ const Team = () => {
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
     },
     {
-      imgSrc: 'assets/images/team/placeholder-person.jpg',
+      imgSrc: 'https://res.cloudinary.com/ddumljyu6/image/upload/v1717292504/HarryHeadShot_ox9j3w.png',
       name: 'Harry Gray',
       position: 'Sr. Software Engineer',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
     },
     {
-      imgSrc: 'assets/images/team/placeholder-person.jpg',
+      imgSrc: 'https://res.cloudinary.com/ddumljyu6/image/upload/v1717292417/kzdpzkn48ofwa8vttaah.jpg',
       name: 'Zack Campanelli',
       position: 'Jr. Software Engineer',
       bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'
