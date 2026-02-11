@@ -187,11 +187,11 @@ const Team = () => {
     }
   ]
 
-  const teamMembersRender = teamMembers.map((m, i) => {
-    return (
-      <TeamMember key={i} imgSrc={m.imgSrc}  name={m.name} position={m.position}  />
-    )
-  })
+  // const teamMembersRender = teamMembers.map((m, i) => {
+  //   return (
+  //     <TeamMember key={i} imgSrc={m.imgSrc}  name={m.name} position={m.position}  />
+  //   )
+  // })
 
   return (
     <section>

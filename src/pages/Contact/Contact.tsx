@@ -4,7 +4,7 @@ import {
   HiChatAlt2,
   HiClock,
   HiMail,
-  HiPhoneOutgoing,
+ 
   HiShieldCheck,
   HiSparkles,
 } from 'react-icons/hi'
