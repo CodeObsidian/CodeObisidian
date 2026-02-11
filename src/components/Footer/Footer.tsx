@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
-import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
+// import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -25,7 +25,7 @@ export default function Footer() {
                 info@codeobsidian.com
               </a>
             </div>
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
               <a
                 href="#"
                 target="_blank"
@@ -53,7 +53,7 @@ export default function Footer() {
               >
                 <FaInstagram className="w-5 h-5" />
               </a>
-            </div>
+            </div> */}
           </div>
           <div className="md:col-span-7 grid grid-cols-2 gap-8 sm:grid-cols-3">
             <div className="flex flex-col gap-4">
