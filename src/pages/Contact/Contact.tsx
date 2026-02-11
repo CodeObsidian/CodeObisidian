@@ -4,7 +4,6 @@ import {
   HiChatAlt2,
   HiClock,
   HiMail,
- 
   HiShieldCheck,
   HiSparkles,
 } from 'react-icons/hi'
@@ -23,6 +22,9 @@ export default function Contact() {
   const [phone, setPhone] = useState('')
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
+
+  // Honeypot (bots fill this, humans never see it)
+  const [company, setCompany] = useState('')
 
   const [nameErr, setNameErr] = useState<FormError>({ error: false, msg: '' })
   const [emailErr, setEmailErr] = useState<FormError>({ error: false, msg: '' })
@@ -70,12 +72,14 @@ export default function Contact() {
 
   const validate = (): boolean => {
     let valid = true
+
     if (!name.trim()) {
       setNameErr({ error: true, msg: 'Please enter a name.' })
       valid = false
     } else {
       setNameErr({ error: false, msg: '' })
     }
+
     if (!email.trim()) {
       setEmailErr({ error: true, msg: 'Please enter your email.' })
       valid = false
@@ -85,12 +89,15 @@ export default function Contact() {
     } else {
       setEmailErr({ error: false, msg: '' })
     }
+
     if (!message.trim()) {
       setMessageErr({ error: true, msg: 'Please enter a message.' })
       valid = false
     } else {
       setMessageErr({ error: false, msg: '' })
     }
+
+    // IMPORTANT: do NOT validate the honeypot. Humans never see it.
     return valid
   }
 
@@ -112,8 +119,10 @@ export default function Contact() {
           phone: phone.trim(),
           subject: subject.trim(),
           message: message.trim(),
+          company: company.trim(), // honeypot
         }),
       })
+
       const data = await res.json().catch(() => ({}))
 
       if (!res.ok) {
@@ -121,18 +130,20 @@ export default function Contact() {
         setSubmitError(typeof data?.error === 'string' ? data.error : 'Something went wrong. Please try again.')
         return
       }
+
       setSubmitStatus('success')
       setName('')
       setEmail('')
       setPhone('')
       setSubject('')
       setMessage('')
+      setCompany('') // reset honeypot
       setNameErr({ error: false, msg: '' })
       setEmailErr({ error: false, msg: '' })
       setMessageErr({ error: false, msg: '' })
     } catch {
       setSubmitStatus('error')
-      setSubmitError('Network error. Make sure the server is running (npm run server).')
+      setSubmitError('Network error. Please try again.')
     }
   }
 
@@ -159,6 +170,7 @@ export default function Contact() {
                   Share goals, timelines, or the current state of your product. We respond quickly with next steps.
                 </p>
               </div>
+
               <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
                 <div className="form-section">
                   <label htmlFor="name" className="required">
@@ -181,6 +193,7 @@ export default function Contact() {
                     )}
                   </div>
                 </div>
+
                 <div className="form-section">
                   <label htmlFor="email" className="required">
                     Email
@@ -203,6 +216,7 @@ export default function Contact() {
                     )}
                   </div>
                 </div>
+
                 <div className="form-section">
                   <label htmlFor="phone">Phone</label>
                   <input
@@ -213,6 +227,7 @@ export default function Contact() {
                     onChange={handlePhoneChange}
                   />
                 </div>
+
                 <div className="form-section">
                   <label htmlFor="subject">Project type</label>
                   <input
@@ -223,6 +238,7 @@ export default function Contact() {
                     onChange={handleSubjectChange}
                   />
                 </div>
+
                 <div className="form-section">
                   <label htmlFor="message" className="required">
                     Message
@@ -238,6 +254,19 @@ export default function Contact() {
                       aria-describedby="messageError"
                       placeholder="What are you aiming to achieve and by when?"
                     />
+
+                    {/* Honeypot field: hidden from humans, bots often fill it */}
+                    <input
+                      type="text"
+                      name="company"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      className="hidden"
+                      aria-hidden="true"
+                    />
+
                     {messageErr.error && (
                       <span id="messageError" className="error">
                         {messageErr.msg}
@@ -245,6 +274,7 @@ export default function Contact() {
                     )}
                   </div>
                 </div>
+
                 {submitStatus === 'success' && (
                   <p className="text-success text-sm font-medium">
                     Message sent. We&apos;ll get back to you soon.
@@ -255,12 +285,13 @@ export default function Contact() {
                     {submitError || 'Something went wrong. Please email us directly at info@codeobsidian.com.'}
                   </p>
                 )}
+
                 <button
                   type="submit"
                   className="primary-button text-sm w-fit disabled:opacity-60 disabled:pointer-events-none"
                   disabled={submitStatus === 'sending'}
                 >
-                  {submitStatus === 'sending' ? 'Opening…' : 'Send your message'}
+                  {submitStatus === 'sending' ? 'Sending…' : 'Send your message'}
                 </button>
               </form>
             </div>
@@ -277,12 +308,11 @@ export default function Contact() {
               </div>
             </div>
             <p className="text-secondary text-sm leading-relaxed">
-              Share links, requirements, and timelines—we'll scope quickly, suggest a path, and align on next steps with a consult call.
+              Share links, requirements, and timelines—we&apos;ll scope quickly, suggest a path, and align on next steps with a consult call.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 { icon: <HiMail />, label: 'Email', value: 'info@codeobsidian.com' },
-                // { icon: <HiPhoneOutgoing />, label: 'Phone', value: '(US) +1 (555) 123-4567' },
                 { icon: <HiClock />, label: 'Hours', value: 'Mon–Fri • 9am–6pm ET' },
                 { icon: <HiShieldCheck />, label: 'Engagement', value: 'NDA-friendly & security-first' },
               ].map((item, idx) => (
@@ -328,7 +358,7 @@ const Hero = () => {
             Book a consult. Get a modern build plan.
           </h1>
           <p className="animate-in text-secondary text-lg md:text-xl max-w-[600px] leading-relaxed">
-            Share what you need—new product, site refresh, or ongoing updates—and we'll return with the best way to launch quickly and confidently.
+            Share what you need—new product, site refresh, or ongoing updates—and we&apos;ll return with the best way to launch quickly and confidently.
           </p>
           <div className="animate-in flex flex-wrap gap-2">
             {['Custom projects & revamps', 'Performance & accessibility', 'Lifecycle support'].map((tag) => (
@@ -351,7 +381,7 @@ const Hero = () => {
                 </span>
               </div>
               <p className="font-display text-primary text-xl font-semibold leading-snug">
-                "We needed a fresh look and better performance—Code Obsidian shipped both without slowing our roadmap."
+                &quot;We needed a fresh look and better performance—Code Obsidian shipped both without slowing our roadmap.&quot;
               </p>
               <div className="flex items-center gap-3">
                 <div className="h-10 w-10 rounded-xl bg-accent-muted flex items-center justify-center font-display text-accent font-semibold text-sm">
@@ -374,7 +404,7 @@ const Hero = () => {
               </div>
               <div className="rounded-xl border border-border bg-bg-elevated/50 p-4 flex items-center justify-between gap-4">
                 <div className="flex flex-col gap-0.5 min-w-0">
-                  <span className="text-muted text-xs font-semibold uppercase tracking-wider">Let's start</span>
+                  <span className="text-muted text-xs font-semibold uppercase tracking-wider">Let&apos;s start</span>
                   <span className="font-display text-primary font-semibold text-sm">Share your goals and timeline</span>
                 </div>
                 <a
@@ -392,8 +422,3 @@ const Hero = () => {
     </section>
   )
 }
-
-
-
-
-
