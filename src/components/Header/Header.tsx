@@ -7,47 +7,63 @@ export default function Header() {
 
   return (
     <>
-      <div 
-        className={`w-full h-full bg-[#000] opacity-30 fixed z-[1] top-0 left-0 ${expanded ? 'block' : 'hidden'} md:!hidden`}
+      <div
+        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity md:hidden ${expanded ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
         onClick={() => setExpanded(false)}
+        aria-hidden="true"
       />
-      <header className='bg-shade'>
-        <div className='container split gap-6 py-2'>
-          <Link to='/'>
-            <img 
-              src='assets/images/White logo - no background.svg'
-              className='max-w-[200px] sm:max-w-[300px] w-full'
+      <header className="sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur-xl">
+        <div className="container split gap-6 py-4 md:py-5">
+          <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-90">
+            <img
+              src="assets/images/White logo - no background.svg"
+              alt="Code Obsidian"
+              className="h-8 w-auto sm:h-9"
             />
           </Link>
-          <button className='md:hidden' onClick={() => setExpanded(true)}>
-            <HiMenu className='text-primary w-[44px] h-[44px] p-2' />
+          <button
+            type="button"
+            className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-primary hover:bg-bg-card transition-colors"
+            onClick={() => setExpanded(true)}
+            aria-label="Open menu"
+            aria-expanded={expanded}
+          >
+            <HiMenu className="w-6 h-6" />
           </button>
-          <div className='header-nav' aria-expanded={expanded}>
-            <button className='md:hidden self-start mb-4' onClick={() => setExpanded(false)}>
-              <HiX className='text-primary w-[44px] h-[44px] p-2' />
-            </button>
-            <NavLink 
-              to='/' 
+          <nav className="header-nav" aria-expanded={expanded}>
+            <button
+              type="button"
+              className="md:hidden self-end flex items-center justify-center w-10 h-10 rounded-lg text-secondary hover:text-primary hover:bg-bg-card transition-colors mb-6"
               onClick={() => setExpanded(false)}
-              className='max-md:nav-item md:secondary-button'>
-              <HiHome className='md:hidden' />
+              aria-label="Close menu"
+            >
+              <HiX className="w-6 h-6" />
+            </button>
+            <NavLink
+              to="/"
+              onClick={() => setExpanded(false)}
+              className="max-md:nav-item md:secondary-button md:!py-2.5 md:!px-4 md:rounded-lg"
+            >
+              <HiHome className="md:hidden shrink-0" />
               <span>Home</span>
             </NavLink>
-            <NavLink 
-              to='/about' 
+            <NavLink
+              to="/about"
               onClick={() => setExpanded(false)}
-              className='max-md:nav-item md:secondary-button'>
-              <HiInformationCircle className='md:hidden' />
+              className="max-md:nav-item md:secondary-button md:!py-2.5 md:!px-4 md:rounded-lg"
+            >
+              <HiInformationCircle className="md:hidden shrink-0" />
               <span>About</span>
             </NavLink>
-            <NavLink 
-              to='/contact' 
+            <NavLink
+              to="/contact"
               onClick={() => setExpanded(false)}
-              className='max-md:nav-item md:primary-button'>
-              <HiAtSymbol className='md:hidden' />
+              className="max-md:nav-item md:primary-button md:!py-2.5 md:!px-5 md:rounded-lg"
+            >
+              <HiAtSymbol className="md:hidden shrink-0" />
               <span>Contact</span>
             </NavLink>
-          </div>
+          </nav>
         </div>
       </header>
     </>

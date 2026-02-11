@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
 :root {
-  font-family: "Inter", system-ui;
-
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Outfit', system-ui, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
